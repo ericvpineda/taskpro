@@ -16,7 +16,7 @@
 }
 
 .app {
-    @apply relative flex justify-center items-center flex-col max-w-7xl mx-auto;
+    @apply relative flex justify-center items-center flex-col max-w-7xl mx-auto z-10 sm:px-16 px-6;
 }
 
 .header-text {
@@ -25,4 +25,14 @@
 
 .description {
     @apply mt-5 text-lg text-gray-600
+}
+
+.logo-text {
+    @apply max-sm:hidden font-satoshi tracking-wider font-semibold text-lg
+    mt-2 text-black
+}
+
+.full-btn {
+    @apply rounded-full border border-black bg-black py-1.5 px-5 text-white hover:bg-white hover:text-black text-center text-sm
+    font-roboto flex items-center justify-center transition-all;
 }

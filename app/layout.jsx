@@ -1,4 +1,5 @@
 import "@styles/globals.css"
+import Nav from "@components/Nav"
 
 export const metadata = {
     title: "TaskPro",
@@ -11,6 +12,7 @@ const Root = ({children}) => {
             <body>
                 <div className="root-layout"></div>
                 <div className="app">
+                    <Nav/>
                     {children}
                 </div>
             </body>
