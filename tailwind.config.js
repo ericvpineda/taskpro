@@ -6,7 +6,15 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        satoshi: ['Satoshi', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif']
+      },
+      colors: {
+        'primary-blue': "#023047"
+      }
+    },
   },
   plugins: [],
 }
