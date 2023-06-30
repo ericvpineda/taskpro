@@ -8,8 +8,6 @@ import { signIn, signOut, useSession, getProviders } from "next-auth/react"
 const Nav = () => {
 
   const {data: session} = useSession()
-
-  const isLoggedIn = false;
   const [providers, setProviders] = useState(null)
 
   useEffect(() => {
@@ -38,7 +36,7 @@ const Nav = () => {
         <div className="sm:flex hidden">
             {session?.user ? (
                 <div className="flex gap-3 md:gap-5">
-                    <Link href="/show-tasks" className="full-btn">Create Task</Link>
+                    <Link href="/create-task" className="full-btn">Create Task</Link>
                     <button type="buttton" className="outline-btn" onClick={signOut}>Sign Out</button>
                     <Link href="/show-tasks">
                         <Image 
