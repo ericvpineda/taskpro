@@ -1,3 +1,5 @@
+import Feed from "@components/Feed"
+
 
 const Home = () => {
   return (
@@ -9,6 +11,7 @@ const Home = () => {
         <p className="text-center description">
             TaskPro is your ultimate task companion tool to create and edit tasks on any device.
         </p>
+        <Feed/>
     </section>
     )
 }

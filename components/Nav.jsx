@@ -7,6 +7,8 @@ import { signIn, signOut, useSession, getProviders } from "next-auth/react"
 
 const Nav = () => {
 
+  const {data: session} = useSession()
+
   const isLoggedIn = false;
   const [providers, setProviders] = useState(null)
 
@@ -26,6 +28,7 @@ const Nav = () => {
             <Image src="img/post-it.svg"
             width={30}
             height={30}
+            alt="logo"
             className="object-container"
             ></Image>        
             <p className="logo-text">TaskPro</p>
@@ -33,12 +36,14 @@ const Nav = () => {
 
 
         <div className="sm:flex hidden">
-            {isLoggedIn ? (
+            {session?.user ? (
                 <div className="flex gap-3 md:gap-5">
-                    <Link href="/show-tasks" className="full-btn">View Task</Link>
-                    <button type="buttton" className="outline-btn" onClick={signOut}>Sign OUt</button>
+                    <Link href="/show-tasks" className="full-btn">Create Task</Link>
+                    <button type="buttton" className="outline-btn" onClick={signOut}>Sign Out</button>
                     <Link href="/show-tasks">
-                        <Image src=""
+                        <Image 
+                        src={session.user.image}
+                        alt="user-image"
                         width={38}
                         height={38}
                         className={"rounded-full"}

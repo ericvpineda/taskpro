@@ -36,3 +36,19 @@
     @apply rounded-full border border-black bg-black py-1.5 px-5 text-white hover:bg-white hover:text-black text-center text-sm
     font-roboto flex items-center justify-center transition-all;
 }
+
+.outline-btn {
+    @apply rounded-full border border-black px-5 hover:bg-black hover:text-white text-center text-sm font-roboto transition-all
+}
+
+.feed {
+    @apply flex justify-center items-center mt-16 mx-auto w-full flex-col gap-2 max-w-3xl
+}
+
+.search_input_container {
+    @apply block rounded-md border border-gray-200 bg-white font-roboto font-medium
+}
+
+.search_input {
+    @apply inline-block py-2.5 pl-5 pr-12 focus:border-black focus:outline-slate-400 focus:ring-0 shadow-lg
+}
