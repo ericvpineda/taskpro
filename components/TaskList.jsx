@@ -4,9 +4,9 @@ import Link from "next/link"
 
 const TaskList = (tasks) => {
   return (
-    <section className="w-full flex justify-center mt-10">
+    <section className="w-full mt-10 overflow-x-auto">
       
-      <div className="task_list_container">
+      <div className="task_table_container">
 
         {/* Note: add resizing for smaller screen widths   */}
         <div className="task_table_header">
@@ -19,7 +19,15 @@ const TaskList = (tasks) => {
 
         </div>
 
-        <div className="table_row"></div>
+        <div className="task_table_row">
+
+          <div id="" className="task_table_row_item">Eric Pineda</div>
+          <div id="" className="task_table_row_item">Clean Bathroom</div>
+          <div id="" className="task_table_row_item">It's due over 10 weeks...</div>
+          <div id="" className="">In Progress</div>
+          <div id="" className="">7/1/2023</div>
+
+        </div>
 
       </div>
 
