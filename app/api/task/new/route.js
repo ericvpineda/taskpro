@@ -26,7 +26,8 @@ export const POST = async (request) => {
             status: 201
         })
     } catch (error) {
-        return new Response("Failure creating new task.", {
+
+        return new Response("Failed to create new task.", {
             status: 500
         })
     }

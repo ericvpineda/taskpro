@@ -29,6 +29,7 @@ const TaskSchema = new Schema({
     },
     author: {
         type: Schema.Types.ObjectId,
+        required: [true, "Task author required"],
         ref: "User" 
     }
 })

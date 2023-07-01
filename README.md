@@ -13,6 +13,7 @@ Todo:
 Todo later: 
 - Change color scheme to default grayed out, if selected, change to black
 - Implement min view ui for nav bar 
+- show error message to use if unable to create new task? (create-task page.jsx)
 
 Note:
 - inpsiration: https://www.youtube.com/watch?v=wm5gMKuwSYk
@@ -20,7 +21,12 @@ Note:
 Issues
 - how to set maxAge for session tokens
 - label select focus tag not working next.js (Form component)
-- user instance does not show up on mongodb atlas
+
+Solutions:
+- task does not add author key to db 
+    - issue: user instance does not show up on mongodb atlas
+    - solution: nextauth route.js -- make sure to wrap callbacks in callbacks object
 
 Questions
 - should i allow task schema date entry to have min/max date 
+- what is proper way to check session and routes for null/error checks
