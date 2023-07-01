@@ -75,8 +75,12 @@
     @apply border border-gray-300 block w-full px-5 py-3 focus:outline-none bg-white rounded-lg
 }
 
+.task_table_wrapper {
+    @apply w-full mt-10 overflow-x-auto shadow-md
+}
+
 .task_table_container {
-    @apply min-w-max h-96 bg-list-background backdrop-blur-md shadow-md rounded-sm overflow-auto
+    @apply min-w-[40rem] h-96 bg-list-background backdrop-blur-md rounded-sm overflow-auto
 }
 
 .task_table_header {
@@ -91,7 +95,7 @@
     @apply grid grid-cols-5 text-center
 }
 
-.task_table_row_item {
-    @apply overflow-auto
-}
+/* .task_table_row_item {
+    @apply 
+} */
 

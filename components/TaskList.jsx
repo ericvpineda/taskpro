@@ -4,7 +4,7 @@ import Link from "next/link"
 
 const TaskList = (tasks) => {
   return (
-    <section className="w-full mt-10 overflow-x-auto">
+    <section className="task_table_wrapper">
       
       <div className="task_table_container">
 
@@ -24,8 +24,8 @@ const TaskList = (tasks) => {
           <div id="" className="task_table_row_item">Eric Pineda</div>
           <div id="" className="task_table_row_item">Clean Bathroom</div>
           <div id="" className="task_table_row_item">It's due over 10 weeks...</div>
-          <div id="" className="">In Progress</div>
-          <div id="" className="">7/1/2023</div>
+          <div id="" className="task_table_row_item">In Progress</div>
+          <div id="" className="task_table_row_item">7/1/2023</div>
 
         </div>
 
