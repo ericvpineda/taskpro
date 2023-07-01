@@ -13,10 +13,19 @@
     
     box-sizing: border-box;
     pointer-events: none;
+    background-image: url('/img/desk.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top, center;
+
 }
 
+/* .body_background {
+    @apply bg-[url('/img/desk.jpg')] bg-cover bg-center bg-no-repeat
+} */
+
 .app {
-    @apply relative flex justify-center items-center flex-col max-w-7xl mx-auto z-10 sm:px-16 px-6;
+    @apply relative flex justify-center items-center flex-col max-w-7xl mx-auto z-10 sm:px-16 px-6
 }
 
 .header-text {
@@ -68,4 +77,16 @@
 
 .textarea_input {
     @apply border border-gray-300 block w-full px-5 py-3 focus:outline-none bg-white rounded-lg
+}
+
+.task_table_header {
+    @apply grid grid-cols-5 font-bold text-center 
+}
+
+.task_table_header_cols {
+    @apply bg-gray-200 mr-0.5 pt-2 pb-1
+}
+
+.task_list_container {
+    @apply w-11/12 h-96 bg-list-background
 }

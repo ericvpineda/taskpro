@@ -16,8 +16,8 @@ const Feed = () => {
       <form action="" className="search_input_container relative w-full flex justify-center">
           <input
             type="text"
-            placeholder="Search for a task"
-            className="search_input w-full focus:outline-none"
+            placeholder="Search for a task..."
+            className="search_input w-full focus:outline-none text-center"
           />
       </form>
 
