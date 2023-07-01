@@ -6,7 +6,7 @@ import { useState } from "react"
 const CreateTask = () => {
 
   const [taskHandler, setTaskHandler] = useState({
-    namee: "",
+    name: "",
     desc: "",
     status: "",
     date: new Date()
@@ -14,7 +14,10 @@ const CreateTask = () => {
 
   const [isSubmitHandler, setIsSubmitHandler] = useState(false)
 
-  const formSubmitHandler = () => {
+  const formSubmitHandler = (e) => {
+    e.preventDefault() 
+
+    console.log("DEBUG: event=", e.target)
 
   }
 
@@ -23,7 +26,6 @@ const CreateTask = () => {
     type="Create"
     task={taskHandler}
     setTask={setTaskHandler}
-    setIsSubmit={setIsSubmitHandler}
     isSubmit={isSubmitHandler}
     formSubmit={formSubmitHandler}
     ></Form>
