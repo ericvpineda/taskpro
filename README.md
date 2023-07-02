@@ -30,6 +30,8 @@ Solutions:
     - solution: 
         - passed in incorrect url to fetch function 
         - make sure route.js in correct folder (ex: task folder)
+- RangeError: Invalid time value
+    - solution: need to place date string into new Date object 
 
 Questions
 - should i allow task schema date entry to have min/max date 

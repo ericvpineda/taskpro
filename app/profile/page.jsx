@@ -2,6 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import ProfileTaskList from "@components/ProfileTaskList";
 
 const Profile = () => {
@@ -13,6 +14,7 @@ const Profile = () => {
 
   const { data: session } = useSession();
   const [tasks, setTasks] = useState([]);
+  const router = useRouter()
 
   useEffect(() => {
     const getUserTasks = async () => {
@@ -30,6 +32,13 @@ const Profile = () => {
     getUserTasks();
   }, [session]);
 
+  const editTaskHandler = async (taskId) => {
+    // Navigate to client page
+    router.push(`/update-task?id=${taskId}`)
+  }
+
+  const deleteTaskHandler = () => {}
+ 
   return (
     <section className="flex justify-center items-center mx-auto w-full max-w-3xl">
         <div className="flex-col">
@@ -37,7 +46,11 @@ const Profile = () => {
             <p className="text-left description">
                 <i>Always deliever more than expected. ~ Larry Page</i>
             </p>
-            <ProfileTaskList tasks={tasks}></ProfileTaskList>
+            <ProfileTaskList 
+                tasks={tasks}
+                editTask={editTaskHandler}
+                deleteTask={deleteTaskHandler}
+            />
         </div>
     </section>
   );
