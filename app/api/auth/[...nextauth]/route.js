@@ -2,6 +2,7 @@ import NextAuth from "next-auth/next";
 import GoogleProvider from 'next-auth/providers/google'
 import { connectToMongoDB } from "@utils/database";
 import User from "@models/user"
+import { redirect } from "next/navigation";
 
 // Route to handle authentication and sessions 
 // Note: need to wrap call back fxns with callbacks object
@@ -42,6 +43,9 @@ const handler = NextAuth({
                 console.error(error)
                 return false;
             }
+        },
+        async signout() {
+            redirect('/')
         }
     }
 })
