@@ -40,6 +40,7 @@ const Form = ({ type, task, setTask, isSubmit, formSubmit }) => {
               id="desc"
               cols="30"
               rows="3"
+              value={task.desc}
               placeholder="Describe the task"
               className="textarea_input"
               onChange={(e) => setTask({ ...task, desc: e.target.value })}
@@ -55,6 +56,7 @@ const Form = ({ type, task, setTask, isSubmit, formSubmit }) => {
                 className="form_input cursor-pointer"
                 name="status"
                 id="status"
+                value={task.status}
                 onChange={(e) => setTask({ ...task, status: e.target.value })}
               >
                 <option value="not-started">Not Started</option>
