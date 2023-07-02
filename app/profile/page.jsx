@@ -85,8 +85,8 @@ const Profile = () => {
  
   return (
     <section className="feed">
-          <h1 className="text-left header-text">{session ? session?.user.name : "My"} Tasks</h1>
-          <p className="text-left description">
+          <h1 className="self-start header-text">{(session?.user._id == selectedProfileId) ? "My" : session.user.username} Tasks</h1>
+          <p className="self-start description">
               <i>Always deliever more than expected. ~ Larry Page</i>
           </p>
           <ProfileTaskList 
