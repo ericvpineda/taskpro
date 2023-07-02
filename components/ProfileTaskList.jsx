@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useEffect } from "react"
+import Link from "next/link"
 
 // Note: props recieved are in object for, need to wrap with {} to get actual value
 const ProfileTaskList = ({ tasks }) => {
@@ -30,7 +31,26 @@ const ProfileTaskList = ({ tasks }) => {
             <div id="" className="task_table_row_item">{task.desc}</div>
             <div id="" className="task_table_row_item">{task.status}</div>
             <div id="" className="task_table_row_item">{task.date}</div>
-            <div className="task_table_row_item">Edit/Delete</div>
+            <div className="task_table_row_item">
+                <Link href="/">
+                    <Image
+                        src="/icons/edit.svg"
+                        alt="edit_icons"
+                        width={18}
+                        height={18}
+                        className="inline-block mr-6 "
+                    ></Image>
+                </Link>
+                <Link href="/">
+                    <Image
+                        src="/icons/delete.svg"
+                        alt="edit_icons"
+                        width={18}
+                        height={18}
+                        className="inline-block"
+                    ></Image>
+                </Link>
+            </div>
 
           </div>)
         })
