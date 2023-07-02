@@ -37,7 +37,23 @@ const Profile = () => {
     router.push(`/update-task?id=${taskId}`)
   }
 
-  const deleteTaskHandler = () => {}
+  const deleteTaskHandler = async (taskId) => {
+
+    const isConfirmed = confirm("Are you sure you want to delete this task?");
+
+    if (isConfirmed) {
+        try {
+            await fetch(`/api/task/${taskId}`, {
+                method: 'DELETE',
+            })
+            const filteredTasks = tasks.filter(taskToFilter => taskToFilter._id !== taskId);
+            setTasks(filteredTasks)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+  }
  
   return (
     <section className="flex justify-center items-center mx-auto w-full max-w-3xl">
