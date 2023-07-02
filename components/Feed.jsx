@@ -84,7 +84,7 @@ const Feed = () => {
       <form action="" className="search_input_container relative w-full flex justify-center">
           <input
             type="text"
-            placeholder="Search task by author, name, description, status, date..."
+            placeholder="Search by any keyword to find tasks..."
             className="search_input w-full focus:outline-none text-center"
             onChange={e => setSearchInput(e.target.value)}
           />

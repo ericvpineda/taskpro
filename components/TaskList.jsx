@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useEffect } from "react"
+import Link from "next/link"
 
 // Note: props recieved are in object for, need to wrap with {} to get actual value
 const TaskList = ({ tasks, sortBy }) => {
@@ -25,26 +26,28 @@ const TaskList = ({ tasks, sortBy }) => {
         </div>
 
         {tasks && tasks.map((task) => {
-          return (<div key={task._id} className="task_table_row">
-
-            <div id="" className="task_table_row_item">
-              <Image
-              src={task.author.image}
-              alt="user_image"
-              width={40}
-              height={40}
-              className="rounded-full object-contain inline-block"
-              ></Image>
-              <span
-              className="ml-3"
-              >{task.author.username}</span>
-              </div>
-            <div id="" className="task_table_row_item">{task.name}</div>
-            <div id="" className="task_table_row_item">{task.desc}</div>
-            <div id="" className="task_table_row_item">{task.status}</div>
-            <div id="" className="task_table_row_item">{task.date}</div>
-
-          </div>)
+          return (
+          <Link key={task._id} href={`/profile?id=${task.author._id}`}>
+            <div className="task_table_row">
+              <div id="" className="task_table_row_item">
+                <Image
+                src={task.author.image}
+                alt="user_image"
+                width={40}
+                height={40}
+                className="rounded-full object-contain inline-block"
+                ></Image>
+                <span
+                className="ml-3"
+                >{task.author.username}</span>
+                </div>
+              <div id="" className="task_table_row_item">{task.name}</div>
+              <div id="" className="task_table_row_item">{task.desc}</div>
+              <div id="" className="task_table_row_item">{task.status}</div>
+              <div id="" className="task_table_row_item">{task.date}</div>
+            </div>
+          </Link>
+          )
         })
         }
 

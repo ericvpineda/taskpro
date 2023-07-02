@@ -2,10 +2,10 @@
 
 import Image from "next/image"
 import { useEffect } from "react"
-import Link from "next/link"
+import { useSession } from "next-auth/react"
 
 // Note: props recieved are in object for, need to wrap with {} to get actual value
-const ProfileTaskList = ({ tasks, editTask, deleteTask, sortBy }) => {
+const ProfileTaskList = ({ tasks, editTask, deleteTask, sortBy, isAuthor}) => {
 
   useEffect(() => {}, [tasks])
 
@@ -31,7 +31,9 @@ const ProfileTaskList = ({ tasks, editTask, deleteTask, sortBy }) => {
             <div id="" className="task_table_row_item">{task.desc}</div>
             <div id="" className="task_table_row_item">{task.status}</div>
             <div id="" className="task_table_row_item">{task.date}</div>
-            <div className="task_table_row_item">
+
+            {isAuthor &&  
+            (<div className="task_table_row_item">
                 <Image
                     src="/icons/edit.svg"
                     alt="edit_icons"
@@ -48,7 +50,8 @@ const ProfileTaskList = ({ tasks, editTask, deleteTask, sortBy }) => {
                     className="inline-block cursor-pointer"
                     onClick={() => deleteTask && deleteTask(task._id)}
                 ></Image>
-            </div>
+            </div>)
+            }
 
           </div>)
         })

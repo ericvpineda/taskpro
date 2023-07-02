@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import ProfileTaskList from "@components/ProfileTaskList";
+import { useSearchParams } from "next/navigation";
 
 const Profile = () => {
   // Steps:
@@ -16,12 +17,14 @@ const Profile = () => {
   const [tasks, setTasks] = useState([]);
   const router = useRouter()
   const [sortQuery, setSortQuery] = useState("")
+  const selectedProfileId = useSearchParams().get("id"); 
 
   useEffect(() => {
     const getUserTasks = async () => {
       if (session) {
         try {
-          const response = await fetch(`/api/users/${session?.user.id}/tasks`);
+          const currentProfileId = selectedProfileId || session?.user.id
+          const response = await fetch(`/api/users/${currentProfileId}/tasks`);
           const data = await response.json();
           setTasks(data);
         } catch (error) {
@@ -92,6 +95,7 @@ const Profile = () => {
                 editTask={editTaskHandler}
                 deleteTask={deleteTaskHandler}
                 sortBy={setSortQuery}
+                isAuthor={selectedProfileId == session?.user.id}
             />
         </div>
     </section>
