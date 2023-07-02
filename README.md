@@ -7,6 +7,8 @@ Todo:
 - create delete route -d
 - create my profile ui + route -d
 - implement search functionality 
+    - task name, status, date, author 
+    - description
 - implement muliti user functionality 
 - add buttons on home page to delete task (if given user) 
 - implement ability to click on tasklist header names and order
