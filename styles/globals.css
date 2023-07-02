@@ -83,12 +83,12 @@ html, body {
 }
 
 .task_table_wrapper {
-    @apply w-full mt-10 overflow-x-auto overflow-y-auto shadow-md
+    @apply w-full mt-10 overflow-auto shadow-md
     mb-16
 }
 
 .task_table_container {
-    @apply min-w-[40rem] bg-list-background backdrop-blur-md rounded-sm overflow-auto
+    @apply min-w-[40rem] bg-list-background backdrop-blur-md rounded-sm
 }
 
 .task_table_wrapper::-webkit-scrollbar, 

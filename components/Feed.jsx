@@ -80,11 +80,11 @@ const Feed = () => {
 
 
   return (
-    <section className="feed">
+    <section className="feed overflow-hidden">
       <form action="" className="search_input_container relative w-full flex justify-center">
           <input
             type="text"
-            placeholder="Search by any keyword to find tasks..."
+            placeholder="Search tasks by any keyword..."
             className="search_input w-full focus:outline-none text-center"
             onChange={e => setSearchInput(e.target.value)}
           />
