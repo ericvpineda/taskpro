@@ -81,7 +81,7 @@ const Feed = () => {
 
   return (
     <section className="feed overflow-hidden">
-      <form action="" className="search_input_container relative w-full flex justify-center mt-4 mb-10">
+      <form onSubmit={(e) => e.preventDefault()} className="search_input_container relative w-full flex justify-center mt-4 mb-10">
           <input
             type="text"
             placeholder="Search tasks by any keyword :p"
