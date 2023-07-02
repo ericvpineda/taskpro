@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 const Form = ({ type, task, setTask, isSubmit, formSubmit }) => {
   return (
     <section className="w-full flex justify-center">
-      <div className="items-start flex-col">
+      <div className="items-start flex-col mb-16">
         <h1 className="header-text">{type} Task</h1>
         <p className="desc">
           As a simple outline, make tasks that are specific, measurable,

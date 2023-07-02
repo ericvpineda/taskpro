@@ -84,20 +84,18 @@ const Profile = () => {
   }
  
   return (
-    <section className="flex justify-center items-center mx-auto w-full max-w-3xl">
-        <div className="flex-col">
-            <h1 className="text-left header-text">{session ? session?.user.name : "My"} Tasks</h1>
-            <p className="text-left description">
-                <i>Always deliever more than expected. ~ Larry Page</i>
-            </p>
-            <ProfileTaskList 
-                tasks={tasks}
-                editTask={editTaskHandler}
-                deleteTask={deleteTaskHandler}
-                sortBy={setSortQuery}
-                isAuthor={selectedProfileId == session?.user.id}
-            />
-        </div>
+    <section className="feed">
+          <h1 className="text-left header-text">{session ? session?.user.name : "My"} Tasks</h1>
+          <p className="text-left description">
+              <i>Always deliever more than expected. ~ Larry Page</i>
+          </p>
+          <ProfileTaskList 
+              tasks={tasks}
+              editTask={editTaskHandler}
+              deleteTask={deleteTaskHandler}
+              sortBy={setSortQuery}
+              isAuthor={selectedProfileId == session?.user.id}
+          />
     </section>
   );
 };
