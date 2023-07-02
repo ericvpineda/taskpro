@@ -19,6 +19,7 @@
 .DS_Store
 *.pem
 start.sh
+notes.md
 
 # debug
 npm-debug.log*
