@@ -1,6 +1,7 @@
 "use client";
 
 import TaskList from "./TaskList";
+import { useState, useEffect } from "react";
 
 // Plan
 // - create search bar
@@ -10,6 +11,20 @@ import TaskList from "./TaskList";
 //   - create component for each rendered task
 
 const Feed = () => {
+
+  const [tasks, setTasks] = useState({})
+
+  useEffect(() => {
+
+    const fetchTasks = async () => {
+     const response = await fetch('/api/task');
+     console.log("DEBUG: data=", response)
+     const data = await response.json()
+     setTasks(data) 
+    }
+    fetchTasks()
+
+  }, [])
 
   return (
     <section className="feed">
@@ -21,7 +36,7 @@ const Feed = () => {
           />
       </form>
 
-      <TaskList tasks={""} handleClick={() => {}} />
+      <TaskList tasks={tasks} handleClick={() => {}} />
     </section>
   );
 };

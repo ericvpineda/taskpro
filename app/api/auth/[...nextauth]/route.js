@@ -27,16 +27,16 @@ const handler = NextAuth({
                 await connectToMongoDB()
     
                 // // Check if user already exists
-                // const userExists = await User.findOne({ email: profile.email })
+                const userExists = await User.findOne({ email: profile.email })
                 
                 // // If not, create new user and save to db
-                // if (!userExists) {
-                await User.create({
-                    email: profile.email,
-                    username: profile.name.replace(" ", "").toLowerCase(),
-                    image: profile.picture
-                })
-                // }
+                if (!userExists) {
+                    await User.create({
+                        email: profile.email,
+                        username: profile.name.replace(" ", "").toLowerCase(),
+                        image: profile.picture
+                    })
+                }
                 return true; 
             } catch (error) {
                 console.error(error)

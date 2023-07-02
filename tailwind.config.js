@@ -13,9 +13,11 @@ module.exports = {
       },
       colors: {
         'primary-blue': "#023047",
-        'list-background': "#fff5"
+        'list-background': "#fffa"
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('autoprefixer')
+  ],
 }
