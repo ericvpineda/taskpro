@@ -25,8 +25,8 @@ const Nav = () => {
         
         <Link href="/" className="flex flex-center gap-2">
             <Image src="img/post-it.svg"
-            width={30}
-            height={30}
+            width={45}
+            height={45}
             alt="logo"
             className="object-container"
             ></Image>        
