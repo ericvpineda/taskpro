@@ -5,7 +5,7 @@ import { useEffect } from "react"
 import Link from "next/link"
 
 // Note: props recieved are in object for, need to wrap with {} to get actual value
-const ProfileTaskList = ({ tasks, editTask, deleteTask }) => {
+const ProfileTaskList = ({ tasks, editTask, deleteTask, sortBy }) => {
 
   useEffect(() => {}, [tasks])
 
@@ -17,10 +17,10 @@ const ProfileTaskList = ({ tasks, editTask, deleteTask }) => {
         {/* Note: add resizing for smaller screen widths   */}
         <div className="task_table_header">
 
-          <div id="task-name" className="task_table_header_cols">Task</div>
-          <div id="task-desc" className="task_table_header_cols">Description</div>
-          <div id="task-status" className="task_table_header_cols">Status</div>
-          <div id="task-due-date" className="task_table_header_cols">Date</div>
+          <div id="task-name" className="task_table_header_cols" onClick={() => sortBy("name")}>Task</div>
+          <div id="task-desc" className="task_table_header_cols" onClick={() => sortBy("desc")}>Description</div>
+          <div id="task-status" className="task_table_header_cols" onClick={() => sortBy("status")}>Status</div>
+          <div id="task-due-date" className="task_table_header_cols" onClick={() => sortBy("date")}>Date</div>
           <div id="task-action" className="task_table_header_cols">Action</div>
 
         </div>

@@ -1,11 +1,10 @@
 'use client'
 
-import Link from "next/link"
 import Image from "next/image"
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 
 // Note: props recieved are in object for, need to wrap with {} to get actual value
-const TaskList = ({ tasks }) => {
+const TaskList = ({ tasks, sortBy }) => {
 
   useEffect(() => {}, [tasks])
 
@@ -17,11 +16,11 @@ const TaskList = ({ tasks }) => {
         {/* Note: add resizing for smaller screen widths   */}
         <div className="task_table_header">
 
-          <div id="task-author-img" className="task_table_header_cols">Author</div>
-          <div id="task-name" className="task_table_header_cols">Task</div>
-          <div id="task-desc" className="task_table_header_cols">Description</div>
-          <div id="task-status" className="task_table_header_cols">Status</div>
-          <div id="task-due-date" className="task_table_header_cols">Date</div>
+          <div id="task-author-img" className="task_table_header_cols" onClick={() => sortBy("author")}>Author</div>
+          <div id="task-name" className="task_table_header_cols" onClick={() => sortBy("name")}>Task</div>
+          <div id="task-desc" className="task_table_header_cols" onClick={() => sortBy("desc")}>Description</div>
+          <div id="task-status" className="task_table_header_cols" onClick={() => sortBy("status")}>Status</div>
+          <div id="task-due-date" className="task_table_header_cols" onClick={() => sortBy("date")}>Date</div>
 
         </div>
 

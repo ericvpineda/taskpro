@@ -15,6 +15,7 @@ const Profile = () => {
   const { data: session } = useSession();
   const [tasks, setTasks] = useState([]);
   const router = useRouter()
+  const [sortQuery, setSortQuery] = useState("")
 
   useEffect(() => {
     const getUserTasks = async () => {
@@ -31,6 +32,30 @@ const Profile = () => {
 
     getUserTasks();
   }, [session]);
+
+  useEffect(() => {
+
+    let sortedTasks = []
+    if (sortQuery == "author") {
+      // Note: sort() mutates array and returns array, need to copy and assign to new array 
+      sortedTasks = [...tasks].sort((a,b) => (a.author.username.toLowerCase() < b.author.username.toLowerCase()) ? -1 : 1)
+    } else if (sortQuery == "name") {
+      sortedTasks = [...tasks].sort((a,b) => (a.name.toLowerCase() < b.name.toLowerCase()) ? -1 : 1)
+    } else if (sortQuery == "desc") {
+      sortedTasks = [...tasks].sort((a,b) => (a.desc.toLowerCase() < b.desc.toLowerCase()) ? -1 : 1)
+    } else if (sortQuery == "status") {
+      sortedTasks = [...tasks].sort((a,b) => (a.status.toLowerCase() < b.status.toLowerCase()) ? -1 : 1)
+    } else if (sortQuery == "date") {
+      sortedTasks = [...tasks].sort((a,b) => (a.date.toLowerCase() < b.date.toLowerCase()) ? -1 : 1)
+    }
+
+    if (sortQuery != "") {
+      setTasks(sortedTasks)
+    }
+    
+    setSortQuery("")
+
+  }, [sortQuery, tasks])
 
   const editTaskHandler = async (taskId) => {
     // Navigate to client page
@@ -66,6 +91,7 @@ const Profile = () => {
                 tasks={tasks}
                 editTask={editTaskHandler}
                 deleteTask={deleteTaskHandler}
+                sortBy={setSortQuery}
             />
         </div>
     </section>
