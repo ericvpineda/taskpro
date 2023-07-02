@@ -43,7 +43,7 @@ const TaskList = ({ tasks, sortBy }) => {
               <div id="" className="task_table_row_item">{task.name}</div>
               <div id="" className="task_table_row_item">{task.desc}</div>
               <div id="" className="task_table_row_item">{task.status}</div>
-              <div id="" className="task_table_row_item">{task.date}</div>
+              <div id="" className="task_table_row_item">{new Date(task.date).toDateString()}</div>
           </Link>
           )
         })

@@ -2,7 +2,6 @@
 
 import Image from "next/image"
 import { useEffect } from "react"
-import { useSession } from "next-auth/react"
 
 // Note: props recieved are in object for, need to wrap with {} to get actual value
 const ProfileTaskList = ({ tasks, editTask, deleteTask, sortBy, isAuthor}) => {
@@ -30,7 +29,7 @@ const ProfileTaskList = ({ tasks, editTask, deleteTask, sortBy, isAuthor}) => {
             <div id="" className="task_table_row_item">{task.name}</div>
             <div id="" className="task_table_row_item">{task.desc}</div>
             <div id="" className="task_table_row_item">{task.status}</div>
-            <div id="" className="task_table_row_item">{task.date}</div>
+            <div id="" className="task_table_row_item">{new Date(task.date).toDateString()}</div>
 
             {isAuthor &&  
             (<div className="task_table_row_item">
