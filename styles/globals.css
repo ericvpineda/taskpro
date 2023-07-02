@@ -83,7 +83,7 @@ html, body {
 }
 
 .task_table_wrapper {
-    @apply w-full mt-10 overflow-auto shadow-md
+    @apply w-full mt-10 overflow-scroll shadow-md min-h-full max-h-[30rem]
     mb-16
 }
 
