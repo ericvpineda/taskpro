@@ -27,7 +27,9 @@ Solutions:
     - issue: user instance does not show up on mongodb atlas
     - solution: nextauth route.js -- make sure to wrap callbacks in callbacks object
 - SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
-    - solution: passed in incorrect url to fetch function 
+    - solution: 
+        - passed in incorrect url to fetch function 
+        - make sure route.js in correct folder (ex: task folder)
 
 Questions
 - should i allow task schema date entry to have min/max date 

@@ -22,7 +22,7 @@ export const POST = async (request) => {
 
         await newTask.save()
     
-        return new Response(JSON.stringify(body), {
+        return new Response(JSON.stringify(newTask), {
             status: 201
         })
     } catch (error) {
