@@ -1,8 +1,14 @@
 'use client'
 
 import Link from "next/link"
+import Image from "next/image"
+import { useState, useEffect } from "react"
 
-const TaskList = (tasks) => {
+// Note: props recieved are in object for, need to wrap with {} to get actual value
+const TaskList = ({ tasks }) => {
+
+  useEffect(() => {}, [tasks])
+
   return (
     <section className="task_table_wrapper">
       
@@ -19,18 +25,29 @@ const TaskList = (tasks) => {
 
         </div>
 
-        {/* {tasks && tasks.map((task) => {
-          <div className="task_table_row">
+        {tasks && tasks.map((task) => {
+          return (<div key={task._id} className="task_table_row">
 
-            <div id="" className="task_table_row_item">Eric Pineda</div>
-            <div id="" className="task_table_row_item">Clean Bathroom</div>
-            <div id="" className="task_table_row_item">It's due over 10 weeks...</div>
-            <div id="" className="task_table_row_item">In Progress</div>
-            <div id="" className="task_table_row_item">7/1/2023</div>
+            <div id="" className="task_table_row_item">
+              <Image
+              src={task.author.image}
+              alt="user_image"
+              width={40}
+              height={40}
+              className="rounded-full object-contain inline-block"
+              ></Image>
+              <span
+              className="ml-3"
+              >{task.author.username}</span>
+              </div>
+            <div id="" className="task_table_row_item">{task.name}</div>
+            <div id="" className="task_table_row_item">{task.desc}</div>
+            <div id="" className="task_table_row_item">{task.status}</div>
+            <div id="" className="task_table_row_item">{task.date}</div>
 
-          </div>
+          </div>)
         })
-        } */}
+        }
 
       </div>
 

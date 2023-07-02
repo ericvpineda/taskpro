@@ -12,7 +12,8 @@ import { useState, useEffect } from "react";
 
 const Feed = () => {
 
-  const [tasks, setTasks] = useState({})
+  // Note: need to set to array to be able to itereate over
+  const [tasks, setTasks] = useState([])
 
   useEffect(() => {
 
