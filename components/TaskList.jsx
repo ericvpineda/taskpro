@@ -27,8 +27,7 @@ const TaskList = ({ tasks, sortBy }) => {
 
         {tasks && tasks.map((task) => {
           return (
-          <Link key={task._id} href={`/profile?id=${task.author._id}`}>
-            <div className="task_table_row">
+          <Link className="task_table_row" key={task._id} href={`/profile?id=${task.author._id}`}>
               <div id="" className="task_table_row_item">
                 <Image
                 src={task.author.image}
@@ -45,7 +44,6 @@ const TaskList = ({ tasks, sortBy }) => {
               <div id="" className="task_table_row_item">{task.desc}</div>
               <div id="" className="task_table_row_item">{task.status}</div>
               <div id="" className="task_table_row_item">{task.date}</div>
-            </div>
           </Link>
           )
         })
