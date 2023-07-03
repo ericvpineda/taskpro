@@ -11,86 +11,95 @@ import { useState, useEffect } from "react";
 //   - create component for each rendered task
 
 const Feed = () => {
-
   // Note: need to set to array to be able to itereate over
-  const [tasks, setTasks] = useState([])
-  const [allTasks, setAllTasks] = useState([])
-  const [searchInput, setSearchInput] = useState("")
-  const [sortQuery, setSortQuery] = useState("")
+  const [tasks, setTasks] = useState([]);
+  const [allTasks, setAllTasks] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+  const [sortQuery, setSortQuery] = useState("");
 
   useEffect(() => {
-
     const fetchTasks = async () => {
-     const response = await fetch('/api/task');
-     const data = await response.json()
-     setAllTasks(data)
-     setTasks(data) 
-    }
-    fetchTasks()
-  }, [])
+      const response = await fetch("/api/task");
+      const data = await response.json();
+      setAllTasks(data);
+      setTasks(data);
+    };
+    fetchTasks();
+  }, []);
 
   // Note: Use debounce function to prevent unnecessary search calls
   useEffect(() => {
-
     const timeout = setTimeout(() => {
-
       // Filter results by name, status, date, author
       if (searchInput.length == 0 && allTasks.length > 0) {
-        setTasks(allTasks)
+        setTasks(allTasks);
       } else if (searchInput) {
-        const regex = new RegExp(searchInput)
-        const filteredTasks = allTasks.filter(task => 
-          regex.test(task.name) ||
-          regex.test(task.status) ||
-          regex.test(task.date) ||
-          regex.test(task.desc) ||
-          regex.test(task.author.username)
-      )
-      setTasks(filteredTasks)
-    }
+        const regex = new RegExp(searchInput);
+        const filteredTasks = allTasks.filter((task) => {
+          return (
+            regex.test(task.name.toLowerCase()) ||
+            regex.test(task.status.toLowerCase()) ||
+            regex.test(new Date(task.date).toDateString().toLowerCase()) ||
+            regex.test(task.desc.toLowerCase()) ||
+            regex.test(task.author.username.toLowerCase())
+          );
+        });
+        setTasks(filteredTasks);
+      }
+    }, 500);
 
-    }, 500)
-
-    return () => clearTimeout(timeout)
-  }, [searchInput])
+    return () => clearTimeout(timeout);
+  }, [searchInput]);
 
   useEffect(() => {
-
-    let sortedTasks = []
+    let sortedTasks = [];
     if (sortQuery == "author") {
-      // Note: sort() mutates array and returns array, need to copy and assign to new array 
-      sortedTasks = [...tasks].sort((a,b) => (a.author.username.toLowerCase() < b.author.username.toLowerCase()) ? -1 : 1)
+      // Note: sort() mutates array and returns array, need to copy and assign to new array
+      sortedTasks = [...tasks].sort((a, b) =>
+        a.author.username.toLowerCase() < b.author.username.toLowerCase()
+          ? -1
+          : 1
+      );
     } else if (sortQuery == "name") {
-      sortedTasks = [...tasks].sort((a,b) => (a.name.toLowerCase() < b.name.toLowerCase()) ? -1 : 1)
+      sortedTasks = [...tasks].sort((a, b) =>
+        a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1
+      );
     } else if (sortQuery == "desc") {
-      sortedTasks = [...tasks].sort((a,b) => (a.desc.toLowerCase() < b.desc.toLowerCase()) ? -1 : 1)
+      sortedTasks = [...tasks].sort((a, b) =>
+        a.desc.toLowerCase() < b.desc.toLowerCase() ? -1 : 1
+      );
     } else if (sortQuery == "status") {
-      sortedTasks = [...tasks].sort((a,b) => (a.status.toLowerCase() < b.status.toLowerCase()) ? -1 : 1)
+      sortedTasks = [...tasks].sort((a, b) =>
+        a.status.toLowerCase() < b.status.toLowerCase() ? -1 : 1
+      );
     } else if (sortQuery == "date") {
-      sortedTasks = [...tasks].sort((a,b) => (a.date.toLowerCase() < b.date.toLowerCase()) ? -1 : 1)
+      sortedTasks = [...tasks].sort((a, b) =>
+        a.date.toLowerCase() < b.date.toLowerCase() ? -1 : 1
+      );
     }
 
     if (sortQuery != "") {
-      setTasks(sortedTasks)
+      setTasks(sortedTasks);
     }
-    
-    setSortQuery("")
 
-  }, [sortQuery, tasks])
-
+    setSortQuery("");
+  }, [sortQuery, tasks]);
 
   return (
     <section className="feed overflow-hidden">
-      <form onSubmit={(e) => e.preventDefault()} className="search_input_container relative w-full flex justify-center mt-4 mb-10">
-          <input
-            type="text"
-            placeholder="Search tasks by any keyword :p"
-            className="search_input w-full focus:outline-none text-center"
-            onChange={e => setSearchInput(e.target.value.toLowerCase())}
-          />
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="search_input_container relative w-full flex justify-center mt-4 mb-10"
+      >
+        <input
+          type="text"
+          placeholder="Search tasks by any keyword :p"
+          className="search_input w-full focus:outline-none text-center"
+          onChange={(e) => setSearchInput(e.target.value.toLowerCase())}
+        />
       </form>
 
-      <TaskList tasks={tasks} sortBy={setSortQuery}/>
+      <TaskList tasks={tasks} sortBy={setSortQuery} />
     </section>
   );
 };
