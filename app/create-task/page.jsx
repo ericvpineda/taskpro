@@ -40,7 +40,7 @@ const CreateTask = () => {
       // TODO: Add error response if response is not ok 
       if (response) {
         // Returns back to home page
-        router.push("/")
+        router.push(`/profile/${session?.user.id}`);
       }
       
     } catch (error) {
