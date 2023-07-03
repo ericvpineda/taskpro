@@ -86,7 +86,7 @@ const Feed = () => {
             type="text"
             placeholder="Search tasks by any keyword :p"
             className="search_input w-full focus:outline-none text-center"
-            onChange={e => setSearchInput(e.target.value)}
+            onChange={e => setSearchInput(e.target.value.toLowerCase())}
           />
       </form>
 
