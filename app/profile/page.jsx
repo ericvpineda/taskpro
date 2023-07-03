@@ -17,24 +17,35 @@ const Profile = () => {
   const [tasks, setTasks] = useState([]);
   const router = useRouter()
   const [sortQuery, setSortQuery] = useState("")
-  const selectedProfileId = useSearchParams().get("id"); 
+  const [isAuthor, setIsAuthor] = useState(false)
+  // Note: cannot put this inside useEffect
+  const selectedAuthor = useSearchParams().get("id")
+  const [authorName, setAuthorName] = useState("")
 
   useEffect(() => {
     const getUserTasks = async () => {
-      if (session) {
-        try {
-          const currentProfileId = selectedProfileId || session?.user.id
-          const response = await fetch(`/api/users/${currentProfileId}/tasks`);
+      try {
+        const currentProfileId = selectedAuthor || session?.user.id
+        const response = await fetch(`/api/users/${currentProfileId}/tasks`);
+        const data = await response.json();
+        setTasks(data);
+        setIsAuthor(currentProfileId == session?.user.id)
+
+        // Get author name if not signed in and click showed tasks
+        if (currentProfileId != session?.user.id) {
+          const response = await fetch(`/api/users/${selectedAuthor}`);
           const data = await response.json();
-          setTasks(data);
-        } catch (error) {
-          console.log(error);
+          setAuthorName(data.username)
+        } else {
+          setAuthorName(session?.user.name)
         }
+      } catch (error) {
+        console.log(error);
       }
     };
 
     getUserTasks();
-  }, [session]);
+  }, [session, isAuthor]);
 
   useEffect(() => {
 
@@ -85,7 +96,7 @@ const Profile = () => {
  
   return (
     <section className="feed">
-          <h1 className="self-start header-text">{(session?.user._id == selectedProfileId) ? "My" : session.user.username} Tasks</h1>
+          <h1 className="self-start header-text">{isAuthor ? "My" : authorName} Tasks</h1>
           <p className="self-start description">
               <i>Always deliever more than expected. ~ Larry Page</i>
           </p>
@@ -94,7 +105,7 @@ const Profile = () => {
               editTask={editTaskHandler}
               deleteTask={deleteTaskHandler}
               sortBy={setSortQuery}
-              isAuthor={selectedProfileId == session?.user.id}
+              isAuthor={isAuthor}
           />
     </section>
   );
