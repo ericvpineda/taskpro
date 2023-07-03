@@ -25,11 +25,6 @@ const Profile = ({params}) => {
     const getUserTasks = async () => {
       try {
         const selectedAuthor = params.id;
-        const response = await fetch(`/api/users/${selectedAuthor}/tasks`);
-        const data = await response.json();
-        setTasks(data);
-        setIsAuthor(selectedAuthor == session?.user.id);
-
         // Get author name if not signed in and click showed tasks
         if (selectedAuthor != session?.user.id) {
           const response = await fetch(`/api/users/${selectedAuthor}`);
@@ -38,6 +33,12 @@ const Profile = ({params}) => {
         } else {
           setAuthor(session?.user);
         }
+
+        const response = await fetch(`/api/users/${selectedAuthor}/tasks`);
+        const data = await response.json();
+        setTasks(data);
+        setIsAuthor(selectedAuthor == session?.user.id);
+
       } catch (error) {
         console.log(error);
       }
