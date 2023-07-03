@@ -4,10 +4,9 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import ProfileTaskList from "@components/ProfileTaskList";
-import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 
-const Profile = () => {
+const Profile = ({params}) => {
   // Steps:
   // 1. use effect to get current user and users tasks
   // 2. display all users tasks in scrollable task list
@@ -20,20 +19,19 @@ const Profile = () => {
   const [sortQuery, setSortQuery] = useState("");
   const [isAuthor, setIsAuthor] = useState(true);
   // Note: cannot put this inside useEffect
-  const selectedAuthor = useSearchParams().get("id");
   const [author, setAuthor] = useState("");
 
   useEffect(() => {
     const getUserTasks = async () => {
       try {
-        const currentProfileId = selectedAuthor || session?.user.id;
-        const response = await fetch(`/api/users/${currentProfileId}/tasks`);
+        const selectedAuthor = params.id;
+        const response = await fetch(`/api/users/${selectedAuthor}/tasks`);
         const data = await response.json();
         setTasks(data);
-        setIsAuthor(currentProfileId == session?.user.id);
+        setIsAuthor(selectedAuthor == session?.user.id);
 
         // Get author name if not signed in and click showed tasks
-        if (currentProfileId != session?.user.id) {
+        if (selectedAuthor != session?.user.id) {
           const response = await fetch(`/api/users/${selectedAuthor}`);
           const data = await response.json();
           setAuthor(data);

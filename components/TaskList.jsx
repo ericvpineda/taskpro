@@ -27,7 +27,7 @@ const TaskList = ({ tasks, sortBy }) => {
 
         {tasks && tasks.map((task) => {
           return (
-          <Link className="task_table_row" key={task._id} href={`/profile?id=${task.author._id}`}>
+          <Link className="task_table_row" key={task._id} href={`/profile/${task.author._id}`}>
               <div id="" className="task_table_row_item">
                 <Image
                 src={task.author.image}
