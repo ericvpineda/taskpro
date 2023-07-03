@@ -18,7 +18,7 @@ const Nav = () => {
     }
 
     readyProviders()
-  }, [providers])
+  }, [])
 
   return (
     <nav className="flex justify-between w-full mb-16 pt-3">
