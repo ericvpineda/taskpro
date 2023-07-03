@@ -38,7 +38,9 @@ const Nav = () => {
             {session?.user ? (
                 <div className="flex gap-3 md:gap-5">
                     <Link href="/create-task" className="full-btn">Create Task</Link>
-                    <button type="buttton" className="outline-btn" onClick={signOut}>Sign Out</button>
+                    <button type="buttton" className="outline-btn" onClick={() => 
+                        signOut({callbackUrl: "/"})
+                    }>Sign Out</button>
                     <Link href={`/profile/${session?.user.id}`}>
                         <Image 
                         src={session.user.image}
@@ -86,7 +88,7 @@ const Nav = () => {
                     <button type="button" 
                     onClick={() => {
                     setToggleDropdown(false)
-                    signOut()
+                    signOut({callbackUrl: "/"})
                     }}
                     className='mt-5 w-full full-btn'
                     >Sign Out</button>

@@ -44,9 +44,6 @@ const handler = NextAuth({
                 return false;
             }
         },
-        async signout() {
-            redirect('/')
-        }
     }
 })
 
