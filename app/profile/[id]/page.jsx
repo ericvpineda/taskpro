@@ -105,24 +105,23 @@ const Profile = ({params}) => {
 
   return (
     <section className="feed">
-      <h1 className="self-start header-text items-center">
+      <h1 className="header-text items-center">
         {isAuthor ? (
-          "My"
+          "My Tasks"
         ) : (
-          <>
+          <div className="flex flex-col justify-center items-center">
             <Image
               src={author.image || "/"}
-              height={50}
-              width={50}
-              className="inline-block rounded-full"
+              height={120}
+              width={120}
+              className="rounded-full mb-5"
               alt="author_image"
             />
-            <span className="ml-5">{author.username}</span>
-          </>
-        )}{" "}
-        Tasks
+            <div className="ml-5">{author.username} Tasks</div>
+          </div>
+        )}
       </h1>
-      <p className="self-start description">
+      <p className="text-center description">
         <i>Always deliever more than expected. ~ Larry Page</i>
       </p>
       <ProfileTaskList
