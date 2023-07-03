@@ -1,7 +1,7 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import ProfileTaskList from "@components/ProfileTaskList";
 import Image from "next/image";
@@ -91,12 +91,8 @@ const Profile = ({params}) => {
 
     if (isConfirmed) {
       try {
-        await fetch(`/api/task/${taskId}`, {
-          method: "DELETE",
-        });
-        const filteredTasks = tasks.filter(
-          (taskToFilter) => taskToFilter._id !== taskId
-        );
+        await fetch(`/api/task/${taskId}`, { method: "DELETE" });
+        const filteredTasks = tasks.filter(taskToFilter => taskToFilter._id !== taskId)
         setTasks(filteredTasks);
       } catch (error) {
         console.log(error);
