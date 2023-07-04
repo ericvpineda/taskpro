@@ -16,7 +16,7 @@ const Feed = () => {
   const [allTasks, setAllTasks] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [sortQuery, setSortQuery] = useState("");
-
+  
   useEffect(() => {
     const fetchTasks = async () => {
       const response = await fetch("/api/task");
@@ -26,7 +26,7 @@ const Feed = () => {
     };
     fetchTasks();
   }, []);
-
+  
   // Note: Use debounce function to prevent unnecessary search calls
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -83,7 +83,7 @@ const Feed = () => {
     }
 
     setSortQuery("");
-  }, [sortQuery, tasks]);
+  }, [sortQuery]);
 
   return (
     <section className="feed overflow-hidden">

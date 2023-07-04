@@ -7,8 +7,6 @@ import Link from "next/link"
 // Note: props recieved are in object for, need to wrap with {} to get actual value
 const TaskList = ({ tasks, sortBy }) => {
 
-  useEffect(() => {}, [tasks])
-
   return (
     <section className="task_table_wrapper">
       
