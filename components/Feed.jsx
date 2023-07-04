@@ -10,23 +10,18 @@ import { useState, useEffect } from "react";
 //   - need to prepopulate prior on first render (fetch all tasks)
 //   - create component for each rendered task
 
-const Feed = () => {
+const Feed = ({data}) => {
   // Note: need to set to array to be able to itereate over
   const [tasks, setTasks] = useState([]);
   const [allTasks, setAllTasks] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [sortQuery, setSortQuery] = useState("");
-  
+
   useEffect(() => {
-    const fetchTasks = async () => {
-      const response = await fetch("/api/task");
-      const data = await response.json();
-      setAllTasks(data);
-      setTasks(data);
-    };
-    fetchTasks();
-  }, []);
-  
+    setTasks(data)
+    setAllTasks(data)
+  }, [data])
+
   // Note: Use debounce function to prevent unnecessary search calls
   useEffect(() => {
     const timeout = setTimeout(() => {

@@ -41,7 +41,7 @@ const Nav = () => {
                     <button type="buttton" className="outline-btn" onClick={() => 
                         signOut({callbackUrl: "/"})
                     }>Sign Out</button>
-                    <a href={`/profile/${session?.user.id}`}>
+                    <Link href={`/profile/${session?.user.id}`}>
                         <Image 
                         src={session.user.image}
                         alt="user-image"
@@ -49,7 +49,7 @@ const Nav = () => {
                         height={38}
                         className={"rounded-full"}
                         />
-                    </a>
+                    </Link>
                 </div>
             ) : (<>
                 {providers && Object.values(providers).map(provider => {
