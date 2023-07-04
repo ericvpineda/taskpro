@@ -9,7 +9,7 @@ export const GET = async (request) => {
             status: 200
         })
     } catch (error) {
-        return new Response("Failed to fetch all tasks", {
+        return new Response(JSON.stringify("Failed to fetch all tasks"), {
             status: 500
         })
     }

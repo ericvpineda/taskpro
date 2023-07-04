@@ -15,7 +15,7 @@ export const GET = async (request, {params}) => {
         });
         
     } catch (error) {
-        return new Response("Failed to get user.", {
+        return new Response(JSON.stringify("Failed to get user."), {
             status: 500
         })
     }

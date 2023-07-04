@@ -15,6 +15,7 @@ const handler = NextAuth({
     ],
     callbacks: {
         async session({ session }) {
+            await connectToMongoDB()
             const sessionUser = await User.findOne({
                 email: session.user.email
             })

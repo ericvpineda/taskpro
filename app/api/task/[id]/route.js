@@ -9,7 +9,7 @@ export const GET = async (request , {params}) => {
             status: 200
         })
     } catch (error) {
-        return new Response("Failed to fetch task.", {
+        return new Response(JSON.stringify("Failed to fetch task."), {
             status: 500
         })
     }
@@ -23,7 +23,7 @@ export const PATCH = async (request , {params}) => {
         await connectToMongoDB()
         const task = await Task.findById(params.id).populate('author')
         if (!task) {
-            return new Response("Task not found.", {status: 404})
+            return new Response(JSON.stringify("Task not found."), {status: 404})
         }
         
         task.name = updates.name
@@ -35,7 +35,7 @@ export const PATCH = async (request , {params}) => {
             status: 200
         })
     } catch (error) {
-        return new Response("Failed to edit task.", {
+        return new Response(JSON.stringify("Failed to edit task."), {
             status: 500
         })
     }

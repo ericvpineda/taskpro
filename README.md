@@ -1,1 +1,0 @@
-Built with Next.js
